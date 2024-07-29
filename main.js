@@ -22,15 +22,15 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-let db;
 
-(async () => {
-    db = await mysql.createConnection({
-        host: 'localhost',
-        user: 'your-username',
-        password: 'your-password',
-        database: 'your-database'
-    });
+const db = {
+    host: '44.212.120.131',
+    user: 'user',
+    password: 'password',
+    database: 'db',
+    port: 3306,
+  };
+  
 
     await db.query(`
         CREATE TABLE IF NOT EXISTS user_profiles (
@@ -43,7 +43,7 @@ let db;
             FOREIGN KEY (user_id) REFERENCES users(id)
         );
     `);
-})();
+;
 
 passport.use(new LocalStrategy(
     async (username, password, done) => {
