@@ -117,7 +117,7 @@ app.post('/api/profile', isAuthenticated, upload.single('profile_picture'), asyn
     }
 });
 
-app.get('/api/profile', isAuthenticated, async (req, res) => {
+app.get('/profile', isAuthenticated, async (req, res) => {
     const user_id = req.user.id;
 
     try {
